@@ -9,15 +9,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             margin: 0;
         }
         #image1, #image2 {
             max-width: 100%;
             height: auto;
-            margin-right: 20px;
+            margin: 10px;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
 </head>
 <body>
     <input type="file" id="fileInput1" accept="image/*">
@@ -25,11 +27,16 @@
     <br>
     <img id="image1" src="#" alt="Image 1">
     <img id="image2" src="#" alt="Image 2">
+    <br>
+    <button id="convertBtn1">Convert to Transparent</button>
+    <button id="convertBtn2">Convert to Transparent</button>
     <script>
         const fileInput1 = document.getElementById('fileInput1');
         const fileInput2 = document.getElementById('fileInput2');
         const image1 = document.getElementById('image1');
         const image2 = document.getElementById('image2');
+        const convertBtn1 = document.getElementById('convertBtn1');
+        const convertBtn2 = document.getElementById('convertBtn2');
         
         fileInput1.addEventListener('change', function(event) {
             const file = event.target.files[0];
@@ -41,6 +48,30 @@
             const file = event.target.files[0];
             const url = URL.createObjectURL(file);
             image2.src = url;
+        });
+        
+        convertBtn1.addEventListener('click', function() {
+            Caman(image1, function() {
+                this.revert();
+                this.newLayer(function() {
+                    this.setBlendingMode('multiply');
+                    this.opacity(50);
+                    this.fillColor('rgba(0, 255, 0, 0.5)');
+                });
+                this.render();
+            });
+        });
+        
+        convertBtn2.addEventListener('click', function() {
+            Caman(image2, function() {
+                this.revert();
+                this.newLayer(function() {
+                    this.setBlendingMode('multiply');
+                    this.opacity(50);
+                    this.fillColor('rgba(0, 255, 0, 0.5)');
+                });
+                this.render();
+            });
         });
     </script>
 </body>
