@@ -1,78 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Comparison App</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            margin: 0;
-        }
-        #image1, #image2 {
-            max-width: 100%;
-            height: auto;
-            margin: 10px;
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js"></script>
+	<title>Custom Rotating Images</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
-    <input type="file" id="fileInput1" accept="image/*">
-    <input type="file" id="fileInput2" accept="image/*">
-    <br>
-    <img id="image1" src="#" alt="Image 1">
-    <img id="image2" src="#" alt="Image 2">
-    <br>
-    <button id="convertBtn1">Convert to Transparent</button>
-    <button id="convertBtn2">Convert to Transparent</button>
-    <script>
-        const fileInput1 = document.getElementById('fileInput1');
-        const fileInput2 = document.getElementById('fileInput2');
-        const image1 = document.getElementById('image1');
-        const image2 = document.getElementById('image2');
-        const convertBtn1 = document.getElementById('convertBtn1');
-        const convertBtn2 = document.getElementById('convertBtn2');
-        
-        fileInput1.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            const url = URL.createObjectURL(file);
-            image1.src = url;
-        });
-        
-        fileInput2.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            const url = URL.createObjectURL(file);
-            image2.src = url;
-        });
-        
-        convertBtn1.addEventListener('click', function() {
-            Caman(image1, function() {
-                this.revert();
-                this.newLayer(function() {
-                    this.setBlendingMode('multiply');
-                    this.opacity(50);
-                    this.fillColor('rgba(0, 255, 0, 0.5)');
-                });
-                this.render();
-            });
-        });
-        
-        convertBtn2.addEventListener('click', function() {
-            Caman(image2, function() {
-                this.revert();
-                this.newLayer(function() {
-                    this.setBlendingMode('multiply');
-                    this.opacity(50);
-                    this.fillColor('rgba(0, 255, 0, 0.5)');
-                });
-                this.render();
-            });
-        });
-    </script>
+	<h1>Custom Rotating Images</h1>
+	<div class="image-container">
+		<img id="image1" class="image" src="" alt="Image 1">
+		<img id="image2" class="image" src="" alt="Image 2">
+	</div>
+	<input type="file" id="inputImage1" accept="image/*">
+	<input type="file" id="inputImage2" accept="image/*">
+	<label for="speed1">Image 1 Rotation Speed (seconds):</label>
+	<input type="number" id="speed1" min="1" max="10" value="5">
+	<label for="direction1">Image 1 Rotation Direction:</label>
+	<select id="direction1">
+		<option value="normal">Clockwise</option>
+		<option value="reverse">Counter-Clockwise</option>
+	</select>
+	<label for="speed2">Image 2 Rotation Speed (seconds):</label>
+	<input type="number" id="speed2" min="1" max="10" value="5">
+	<label for="direction2">Image 2 Rotation Direction:</label>
+	<select id="direction2">
+		<option value="normal">Clockwise</option>
+		<option value="reverse">Counter-Clockwise</option>
+	</select>
+	<button class="pause-button" id="pauseRotation">Pause Rotation</button>
+	<script src="script.js"></script>
 </body>
+
 </html>
