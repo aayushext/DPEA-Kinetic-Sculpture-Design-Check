@@ -1,7 +1,13 @@
+h1 {
+	text-align: center;
+}
+
 .image-container {
 	position: relative;
 	width: 400px;
 	height: 400px;
+	justify-content: center;
+	align-items: center;
 }
 
 .image {
@@ -32,5 +38,5 @@
 
 #image2 {
 	z-index: 2;
-	opacity: 0.5;
+	opacity: 1;
 }

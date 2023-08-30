@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
-<body>
+<body onload="pauseRotation()">
 	<h1>Custom Rotating Images</h1>
 	<div class="image-container">
 		<img id="image1" class="image" src="" alt="Image 1">
@@ -28,7 +28,8 @@
 		<option value="normal">Clockwise</option>
 		<option value="reverse">Counter-Clockwise</option>
 	</select>
-	<button class="pause-button" id="pauseRotation">Pause Rotation</button>
+	<button class="pause-button" id="pauseRotation">Start</button>
+	<button class="reset-button" id="resetRotation">Reset Rotation</button>
 	<script src="script.js"></script>
 </body>
 
