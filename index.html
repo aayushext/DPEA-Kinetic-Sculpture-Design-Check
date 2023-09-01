@@ -7,29 +7,55 @@
 </head>
 
 <body onload="pauseRotation()">
-	<h1>Custom Rotating Images</h1>
-	<div class="image-container">
-		<img id="image1" class="image" src="" alt="Image 1">
-		<img id="image2" class="image" src="" alt="Image 2">
+	<div class="header">
+		<h1>Custom Rotating Images</h1>
 	</div>
-	<input type="file" id="inputImage1" accept="image/*">
-	<input type="file" id="inputImage2" accept="image/*">
-	<label for="speed1">Image 1 Rotation Speed (seconds):</label>
-	<input type="number" id="speed1" min="1" max="10" value="5">
-	<label for="direction1">Image 1 Rotation Direction:</label>
-	<select id="direction1">
-		<option value="normal">Clockwise</option>
-		<option value="reverse">Counter-Clockwise</option>
-	</select>
-	<label for="speed2">Image 2 Rotation Speed (seconds):</label>
-	<input type="number" id="speed2" min="1" max="10" value="5">
-	<label for="direction2">Image 2 Rotation Direction:</label>
-	<select id="direction2">
-		<option value="normal">Clockwise</option>
-		<option value="reverse">Counter-Clockwise</option>
-	</select>
-	<button class="pause-button" id="pauseRotation">Start</button>
-	<button class="reset-button" id="resetRotation">Reset Rotation</button>
+	<div class="image-container">
+		<img id="image1" class="image" src="">
+		<!--alt="Image 1"-->
+		<img id="image2" class="image" src="">
+		<!--alt="Image 2"-->
+	</div>
+	<div class="controls">
+		<button class="pause-button" id="pauseRotation">Start</button>
+		<button class="reset-button" id="resetRotation">Reset Rotation</button>
+
+		<label class="form-control" id="sameDesignText" for="sameDesign" style="display: inline-block;">Same Design:<input
+				type="checkbox" id="sameDesign" style="display: inline-grid;"></label>
+		<label class="form-control" id="flippedText" for="flipped" style="display: none;">Flip Design:<input type="checkbox"
+				id="flipped" style="display: none;"></label>
+
+		<p id="flippedText" style="display: none;">Flipped</p></input>
+	</div>
+	<div class="grid-container">
+		<div class="grid-item">
+			<h4 class="grid-title">Image #1</h4>
+			<ul>
+				<li><input type="file" id="inputImage1" accept="image/*"></li>
+				<li><label for="speed1">Rotation Speed (seconds):</label>
+					<input type="number" id="speed1" min="1" max="10" value="5">
+				</li>
+				<li><label class="form-control" for="direction1">Flip Direction:<input type="checkbox"
+							id="direction1"></label>
+				</li>
+			</ul>
+		</div>
+		<div class="grid-item">
+			<h4 class="grid-title">Image #2</h4>
+			<ul>
+				<li><input type="file" id="inputImage2" accept="image/*"></li>
+				<li><label for="speed2">Rotation Speed (seconds):</label>
+					<input type="number" id="speed2" min="1" max="10" value="5">
+				</li>
+				<li><label class="form-control" for="direction2">Flip Direction:<input type="checkbox"
+							id="direction2"></label>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer">
+		<h5>Created by Aayush Kokate & Beautified by Sean Wirtz</h5>
+	</div>
 	<script src="script.js"></script>
 </body>
 

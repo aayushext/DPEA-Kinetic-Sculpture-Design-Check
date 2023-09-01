@@ -3,11 +3,15 @@ const image2 = document.getElementById('image2');
 const inputImage1 = document.getElementById('inputImage1');
 const inputImage2 = document.getElementById('inputImage2');
 const speed1Input = document.getElementById('speed1');
-const direction1Select = document.getElementById('direction1');
+const direction1CheckBox = document.getElementById('direction1');
 const speed2Input = document.getElementById('speed2');
-const direction2Select = document.getElementById('direction2');
+const direction2CheckBox = document.getElementById('direction2');
 const pauseRotationButton = document.getElementById('pauseRotation');
 const resetRotationButton = document.getElementById('resetRotation');
+const sameDesignCheckBox = document.getElementById('sameDesign');
+const sameDesignText = document.getElementById('sameDesignText');
+const flipDesignCheckBox = document.getElementById('flipped');
+const flipDesignText = document.getElementById('flippedText');
 
 let isPaused = false;
 let initialSpeed1 = parseFloat(speed1Input.value);
@@ -31,22 +35,22 @@ inputImage2.addEventListener('change', (event) => {
 
 speed1Input.addEventListener('input', () => {
 	if (!isPaused) {
-		updateImageRotation(image1, speed1Input, direction1Select);
+		updateImageRotation(image1, speed1Input, direction1CheckBox);
 	}
 });
 
-direction1Select.addEventListener('change', () => {
-	updateImageRotation(image1, speed1Input, direction1Select);
+direction1CheckBox.addEventListener('click', () => {
+	updateImageRotation(image1, speed1Input, direction1CheckBox);
 });
 
 speed2Input.addEventListener('input', () => {
 	if (!isPaused) {
-		updateImageRotation(image2, speed2Input, direction2Select);
+		updateImageRotation(image2, speed2Input, direction2CheckBox);
 	}
 });
 
-direction2Select.addEventListener('change', () => {
-	updateImageRotation(image2, speed2Input, direction2Select);
+direction2CheckBox.addEventListener('click', () => {
+	updateImageRotation(image2, speed2Input, direction2CheckBox);
 });
 
 pauseRotationButton.addEventListener('click', () => {
@@ -57,8 +61,8 @@ pauseRotationButton.addEventListener('click', () => {
 		pauseRotationButton.textContent = 'Pause Rotation';
 		isPaused = !isPaused;
 		resetAnimation();
-		updateImageRotation(image1, speed1Input, direction1Select);
-		updateImageRotation(image2, speed2Input, direction2Select);
+		updateImageRotation(image1, speed1Input, direction1CheckBox);
+		updateImageRotation(image2, speed2Input, direction2CheckBox);
 	}
 	if (isPaused) {
 		pauseRotationButton.textContent = 'Resume Rotation';
@@ -75,6 +79,25 @@ resetRotationButton.addEventListener('click', () => {
 	resetAnimation();
 });
 
+sameDesignCheckBox.addEventListener('click', (event) => {
+	if (event.target.checked) {
+		flipDesignCheckBox.style.display = "inline-grid";
+		flipDesignText.style.display = "inline-block";
+		image2.src = image1.src;
+	} else {
+		flipDesignCheckBox.style.display = "none";
+		flipDesignText.style.display = "none";
+	}
+});
+
+flipDesignCheckBox.addEventListener('click', (event) => {
+	if (event.target.checked) {
+		image2.style.scale = "-1 1";
+	} else {
+		image2.style.scale = "1 1";
+	}
+});
+
 function load() {
 	pauseRotation();
 	pauseRotationButton.textContent = 'Start';
@@ -82,7 +105,7 @@ function load() {
 
 function updateImageRotation(image, speedInput, directionSelect) {
 	const speed = parseFloat(speedInput.value);
-	const direction = directionSelect.value === 'normal' ? 'normal' : 'reverse';
+	const direction = directionSelect.checked === false ? 'normal' : 'reverse';
 	image.style.setProperty('--rotation-speed', `${speed}s`);
 	image.style.setProperty('--rotation-direction', direction);
 }
@@ -92,15 +115,15 @@ function pauseRotation() {
 	initialSpeed2 = parseFloat(speed2Input.value);
 	speed1Input.value = '0';
 	speed2Input.value = '0';
-	updateImageRotation(image1, speed1Input, direction1Select);
-	updateImageRotation(image2, speed2Input, direction2Select);
+	updateImageRotation(image1, speed1Input, direction1CheckBox);
+	updateImageRotation(image2, speed2Input, direction2CheckBox);
 }
 
 function resumeRotation() {
-	if (parseFloat(speed1Input.value) == 0) speed1Input.value = initialSpeed1; 
-	if (parseFloat(speed2Input.value) == 0)speed2Input.value = initialSpeed2;
-	updateImageRotation(image1, speed1Input, direction1Select);
-	updateImageRotation(image2, speed2Input, direction2Select);
+	if (parseFloat(speed1Input.value) == 0) speed1Input.value = initialSpeed1;
+	if (parseFloat(speed2Input.value) == 0) speed2Input.value = initialSpeed2;
+	updateImageRotation(image1, speed1Input, direction1CheckBox);
+	updateImageRotation(image2, speed2Input, direction2CheckBox);
 }
 
 function resetAnimation() {
