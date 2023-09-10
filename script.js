@@ -1,3 +1,4 @@
+const imageContainer = document.getElementById('imageContainer');
 const image1 = document.getElementById('image1');
 const image2 = document.getElementById('image2');
 const inputImage1 = document.getElementById('inputImage1');
@@ -12,6 +13,7 @@ const sameDesignCheckBox = document.getElementById('sameDesign');
 const sameDesignText = document.getElementById('sameDesignText');
 const flipDesignCheckBox = document.getElementById('flipped');
 const flipDesignText = document.getElementById('flippedText');
+const colorInput = document.getElementById('color');
 
 let isPaused = false;
 let initialSpeed1 = parseFloat(speed1Input.value);
@@ -31,6 +33,10 @@ inputImage2.addEventListener('change', (event) => {
 		const imageUrl = URL.createObjectURL(file);
 		image2.src = imageUrl;
 	}
+});
+
+colorInput.addEventListener('input', () => {
+	imageContainer.style.backgroundColor = colorInput.value;
 });
 
 speed1Input.addEventListener('input', () => {

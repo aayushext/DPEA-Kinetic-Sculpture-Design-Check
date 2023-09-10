@@ -2,8 +2,8 @@
 	--dark: #201533;
 	--less-dark: #203562;
 	--white: #ffffff;
-	--neutral: #1e579c;
-	--light-accent: #0ce6f2;
+	--neutral: #1e629c;
+	--light-accent: #44B2FF;
 }
 
 body {
@@ -24,12 +24,12 @@ body {
 .image-container {
 	border: 5px solid;
 	margin: auto;
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: #D2D0D6;
 	position: relative;
 	border-radius: 10px;
 	width: 325px;
 	height: 325px;
-	padding: 15px;
+	padding: 10px;
 	box-sizing: content-box;
 	/*Ensure padding is included in the width and height */
 	display: flex;
@@ -176,12 +176,12 @@ input[type="checkbox"] {
 
 	font: inherit;
 	color: currentColor;
-	width: 1.15em;
-	height: 1.15em;
-	border: 0.15em solid currentColor;
-	border-radius: 0.15em;
+	width: 18px;
+	height: 18px;
+	border: 1.5px solid currentColor;
+	border-radius: 4px;
 	transform:
-		translateX(0.05em);
+		translateX(2px) translateY(2px);
 
 	display: inline-grid;
 	place-content: center;
@@ -189,13 +189,18 @@ input[type="checkbox"] {
 
 input[type="checkbox"]::before {
 	content: "";
-	width: 0.6em;
-	height: 0.6em;
+	width: 10px;
+	height: 10px;
 	transform: scale(0);
 	transition: 120ms transform ease-in-out;
-	box-shadow: inset 1.5em 1.5em var(--light-accent);
+	box-shadow: inset 18px 18px var(--light-accent);
 	/* Windows High Contrast Mode */
 	background-color: CanvasText;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	background-clip: content-box;
+	padding: 0.5px;
 }
 
 input[type="checkbox"]:checked::before {
@@ -203,8 +208,8 @@ input[type="checkbox"]:checked::before {
 }
 
 input[type="checkbox"]:focus {
-	outline: max(2px, 0.15em) solid currentColor;
-	outline-offset: max(2px, 0.15em);
+	outline: max(2px, 10px) solid currentColor;
+	outline-offset: max(2px, 10px);
 }
 
 input[type="checkbox"]:disabled {
@@ -212,4 +217,30 @@ input[type="checkbox"]:disabled {
 
 	color: grey;
 	cursor: not-allowed;
+}
+
+/* COLOR PICKER  */
+
+input[type="color"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 28px;
+	height: 28px;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	transform:
+		/* translateX(-3px) */
+		translateY(4px);
+}
+
+input[type="color"]::-webkit-color-swatch {
+	border-radius: 4px;
+	border: 1.5px solid #000;
+}
+
+input[type="color"]::-moz-color-swatch {
+	border-radius: 4px;
+	border: 1.5px solid #000;
 }

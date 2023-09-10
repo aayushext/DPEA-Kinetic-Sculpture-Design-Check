@@ -11,7 +11,7 @@
 		<h1>Custom Rotating Images</h1>
 	</header>
 	<div class="container">
-		<div class="image-container">
+		<div class="image-container" id="imageContainer">
 			<img id="image1" class="image" src="">
 			<!--alt="Image 1"-->
 			<img id="image2" class="image" src="">
@@ -21,6 +21,9 @@
 			<button class="pause-button" id="pauseRotation">Start</button>
 			<button class="reset-button" id="resetRotation">Reset Rotation</button>
 
+
+			<label class="form-control" id="colorText" for="color" style="display: inline-block;">BG Color:<input type="color"
+					id="color" value="#D2D0D6" style="display: inline-grid;"></label>
 			<label class="form-control" id="sameDesignText" for="sameDesign" style="display: inline-block;">Same Design:<input
 					type="checkbox" id="sameDesign" style="display: inline-grid;"></label>
 			<label class="form-control" id="flippedText" for="flipped" style="display: none;">Flip Design:<input
