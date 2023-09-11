@@ -1,11 +1,14 @@
+/* Variable Definitions */
 :root {
 	--dark: #201533;
 	--less-dark: #203562;
 	--white: #ffffff;
 	--neutral: #1e629c;
 	--light-accent: #44B2FF;
+	--grey: #D2D0D6;
 }
 
+/* Global Styles */
 body {
 	display: flex;
 	flex-direction: column;
@@ -15,6 +18,7 @@ body {
 	background-color: ghostwhite;
 }
 
+/* Containers */
 .container {
 	display: block;
 	justify-content: center;
@@ -24,19 +28,19 @@ body {
 .image-container {
 	border: 5px solid;
 	margin: auto;
-	background-color: #D2D0D6;
+	background-color: var(--grey);
 	position: relative;
 	border-radius: 10px;
 	width: 325px;
 	height: 325px;
 	padding: 10px;
 	box-sizing: content-box;
-	/*Ensure padding is included in the width and height */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
+/* Images */
 .image {
 	position: absolute;
 	width: 325px;
@@ -56,6 +60,7 @@ body {
 	}
 }
 
+/* Controls */
 .controls {
 	margin-bottom: 10px;
 	align-items: center;
@@ -66,6 +71,7 @@ body {
 	margin-top: 10px;
 }
 
+/* Specific Element Styles */
 #image1 {
 	justify-content: center;
 	z-index: 1;
@@ -76,19 +82,23 @@ body {
 	z-index: 2;
 }
 
+/* Grid */
 .grid-container {
 	display: grid;
-	grid-template-columns: auto auto auto;
-	background-color: var(--dark);
+	/* grid-template-columns: 1fr 1fr 5fr; */
+	grid-auto-flow: column;
 	border-radius: 10px;
+	justify-content: center;
+	margin-top: 5px;
+	max-width: 725px;
 }
 
 .grid-item {
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: var(--grey);
 	padding: 10px;
-	border-radius: 7.5px;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	border: 8px solid;
+	border-color: var(--dark);
+	border-radius: 16px;
 }
 
 .grid-item:first-child {
@@ -104,9 +114,12 @@ body {
 .grid-title {
 	margin: 0;
 	text-align: center;
+	font-size: 18px;
 }
 
-.header {
+/* Header and Footer */
+.header,
+.footer {
 	vertical-align: top;
 	font-family: Monaco, monospace;
 	font-weight: bold;
@@ -118,25 +131,21 @@ body {
 }
 
 .footer {
-	bottom: 0;
-	vertical-align: top;
-	font-family: Monaco, monospace;
-	text-align: center;
-	width: 100%;
-	margin-top: 2.5%;
-	margin-bottom: 0;
-	color: var(--white);
-	background-color: var(--dark);
+	margin-top: 2%;
+	margin-bottom: 0%;
+	line-height: 0;
 }
 
+/* Typography */
 div {
 	font-family: "ida Console", monospace;
 }
 
 img {
-	text-indent: -10000px
+	text-indent: -10000px;
 }
 
+/* Buttons and Inputs */
 button,
 input[type="number"] {
 	background-color: var(--neutral);
@@ -146,13 +155,28 @@ input[type="number"] {
 	padding: 5px 3.5px 5px 3.5px;
 }
 
-form-control {
-	font-size: 2rem;
+input[type="number"] {
+	transform: translateX(-10px);
+}
+
+/* Lists */
+li {
+	margin-bottom: 8px;
+	list-style-type: square;
+}
+
+.instructions {
+	font-size: 15px;
+}
+
+/* Form Controls */
+.form-control {
+	font-size: 16px;
 	font-weight: bold;
 	line-height: 1.1;
 	display: grid;
-	grid-template-columns: 1em auto;
-	gap: 0.5em;
+	grid-template-columns: 16px auto;
+	gap: 8px;
 }
 
 .form-control+.form-control {
@@ -164,25 +188,19 @@ form-control {
 	cursor: not-allowed;
 }
 
+/* Checkboxes */
 input[type="checkbox"] {
-	/* Add if not using autoprefixer */
 	-webkit-appearance: none;
-	/* Remove most all native input styles */
 	appearance: none;
-	/* For iOS < 15 */
 	background-color: var(--neutral);
-	/* Not removed via appearance */
 	margin: 0;
-
 	font: inherit;
 	color: currentColor;
 	width: 18px;
 	height: 18px;
 	border: 1.5px solid currentColor;
 	border-radius: 4px;
-	transform:
-		translateX(2px) translateY(2px);
-
+	transform: translateX(2px) translateY(2px);
 	display: inline-grid;
 	place-content: center;
 }
@@ -194,10 +212,7 @@ input[type="checkbox"]::before {
 	transform: scale(0);
 	transition: 120ms transform ease-in-out;
 	box-shadow: inset 18px 18px var(--light-accent);
-	/* Windows High Contrast Mode */
 	background-color: CanvasText;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
 	border-radius: 2px;
 	background-clip: content-box;
 	padding: 0.5px;
@@ -214,13 +229,11 @@ input[type="checkbox"]:focus {
 
 input[type="checkbox"]:disabled {
 	--form-control-color: grey;
-
 	color: grey;
 	cursor: not-allowed;
 }
 
-/* COLOR PICKER  */
-
+/* Color Picker */
 input[type="color"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -230,9 +243,7 @@ input[type="color"] {
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
-	transform:
-		/* translateX(-3px) */
-		translateY(4px);
+	transform: translateY(4px);
 }
 
 input[type="color"]::-webkit-color-swatch {
