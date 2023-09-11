@@ -48,6 +48,8 @@ body {
 	animation: rotate var(--rotation-speed, 5s) linear infinite var(--rotation-direction, normal);
 	transform-origin: center center;
 	padding: 0;
+	mix-blend-mode: multiply;
+	filter: contrast(1);
 }
 
 @keyframes rotate {
