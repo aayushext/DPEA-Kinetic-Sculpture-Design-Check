@@ -98,7 +98,7 @@ body {
 .grid-item {
 	background-color: var(--grey);
 	padding: 10px;
-	border: 8px solid;
+	border: 6px solid;
 	border-color: var(--dark);
 	border-radius: 16px;
 }
