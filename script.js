@@ -64,6 +64,8 @@ colorInput.addEventListener('change', (event) => {
 		bgAnimPaused = true;
 
 		imageContainer.style.transitionDuration = "0s";
+		imageContainer.style.backgroundColor = bgColor.value;
+		animColorButton.textContent = "Resume BG Animation";
 	}
 });
 
