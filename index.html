@@ -17,19 +17,29 @@
 			<img id="image2" class="image" src="">
 			<!--alt="Image 2"-->
 		</div>
-		<div class="controls">
+		<div class="controls" id="controlsTwo" style="display: none;">
 			<button class="pause-button" id="pauseRotation">Start</button>
 			<button class="reset-button" id="resetRotation">Reset Rotation</button>
+		</div>
+		<div class="controls">
+			<div id="controlsOne" style="display: inline-block;">
+				<button class="pause-button" id="pauseRotation">Start</button>
+				<button class="reset-button" id="resetRotation">Reset Rotation</button>
+			</div>
+			<select name="color" id="color">
+				<option value="bgColor">BG Color</option>
+				<option value="animColor">Animated BG Color</option>
+			</select>:
 
+			<input type="color" id="bgColor" value="#D2D0D6" style="display: inline-grid;">
+			<input type="text" id="animColor" value="#33CCCC, #33CC36, #B8CC33, #FCCA00, #33CC36" style="display: none;">
+			<button class="bg-button" id="animColorButton" style="display: none;">Start BG Animation</button>
 
-			<label class="form-control" id="colorText" for="color" style="display: inline-block;">BG Color:<input type="color"
-					id="color" value="#D2D0D6" style="display: inline-grid;"></label>
 			<label class="form-control" id="sameDesignText" for="sameDesign" style="display: inline-block;">Same Design:<input
 					type="checkbox" id="sameDesign" style="display: inline-grid;"></label>
-			<label class="form-control" id="flippedText" for="flipped" style="display: none;">Flip Design:<input
-					type="checkbox" id="flipped" style="display: none;"></label>
 
-			<p id="flippedText" style="display: none;">Flipped</p></input>
+			<label class="form-control" id="flippedText" for="flipped" style="display: none; margin: 0px;">Flip Design:<input
+					type="checkbox" id="flipped" style="display: none;"></label></input>
 		</div>
 		<div class="grid-container">
 			<div class="grid-item">
@@ -64,6 +74,8 @@
 					<li>If Disk 2 shares the same design as Disk 1, check the "Same Design" checkbox. If Disk 2's design is
 						flipped, check the "Flipped" checkbox.</li>
 					<li>Adjust the background color by clicking on the gray box near the text "BG Color."</li>
+					<li>You can also animate the background color by clicking on blue button, "BG Color" and selecting to "Animated BG Color".</li>
+					<li>For the Animated BG Color, just hex codes for colors and seperate them with commas.</li>
 					<li>Initiate or pause the rotation by clicking the "Start" button.</li>
 					<li>If any issues occur with the rotation, such as being out of sync, press the "Reset Rotation" button to fix
 						it.</li>

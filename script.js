@@ -13,9 +13,20 @@ const sameDesignCheckBox = document.getElementById('sameDesign');
 const sameDesignText = document.getElementById('sameDesignText');
 const flipDesignCheckBox = document.getElementById('flipped');
 const flipDesignText = document.getElementById('flippedText');
+
 const colorInput = document.getElementById('color');
+const bgColor = document.getElementById('bgColor');
+const animColor = document.getElementById('animColor');
+const animColorButton = document.getElementById('animColorButton');
+
+const controlsOne = document.getElementById('controlsOne');
+const controlsTwo = document.getElementById('controlsTwo');
+
+const root = document.querySelector(':root');
+const variables = getComputedStyle(root);
 
 let isPaused = false;
+let bgAnimPaused = true;
 let initialSpeed1 = parseFloat(speed1Input.value);
 let initialSpeed2 = parseFloat(speed2Input.value);
 
@@ -35,9 +46,44 @@ inputImage2.addEventListener('change', (event) => {
 	}
 });
 
-colorInput.addEventListener('input', () => {
-	imageContainer.style.backgroundColor = colorInput.value;
+colorInput.addEventListener('change', (event) => {
+	if (event.target.value === "animColor") {
+		animColor.style.display = "inline-block";
+		animColorButton.style.display = "inline-block";
+		controlsOne.style.display = "none";
+		controlsTwo.style.display = "block";
+		bgColor.style.display = "none";
+
+		imageContainer.style.transitionDuration = "0.75s";
+	} else {
+		animColor.style.display = "none";
+		animColorButton.style.display = "none";
+		bgColor.style.display = "inline-block";
+		controlsOne.style.display = "inline-block";
+		controlsTwo.style.display = "none";
+		bgAnimPaused = true;
+
+		imageContainer.style.transitionDuration = "0s";
+	}
 });
+
+animColorButton.addEventListener('click', () => {
+	if (bgAnimPaused === true) {
+		bgAnimPaused = false;
+		const colors = animColor.value.split(',').map(color => color.trim());
+		animateBackgroundColor(colors);
+		animColorButton.textContent = "Stop BG Animation";
+	} else {
+		bgAnimPaused = true;
+		imageContainer.style.backgroundColor = bgColor.value;
+		animColorButton.textContent = "Resume BG Animation";
+	}
+});
+
+bgColor.addEventListener('input', () => {
+	imageContainer.style.backgroundColor = bgColor.value;
+});
+
 
 speed1Input.addEventListener('input', () => {
 	if (!isPaused) {
@@ -149,4 +195,18 @@ function resetAnimation() {
 			image2.style.animationName = ""
 		}, 0);
 	});
+}
+
+function animateBackgroundColor(colors) {
+	let currentIndex = 0;
+
+	function changeColor() {
+		if (colors.length > 0 && bgAnimPaused !== true) {
+			imageContainer.style.backgroundColor = colors[currentIndex];
+			currentIndex = (currentIndex + 1) % colors.length;
+			setTimeout(changeColor, 1000); // Change color every 1 second
+		}
+	}
+
+	changeColor();
 }

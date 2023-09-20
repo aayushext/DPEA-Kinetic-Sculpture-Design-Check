@@ -6,6 +6,7 @@
 	--neutral: #1e629c;
 	--light-accent: #44B2FF;
 	--grey: #D2D0D6;
+
 }
 
 /* Global Styles */
@@ -38,6 +39,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition: background-color 0s ease-in-out;
 }
 
 /* Images */
@@ -149,7 +151,8 @@ img {
 
 /* Buttons and Inputs */
 button,
-input[type="number"] {
+input[type="number"],
+select {
 	background-color: var(--neutral);
 	color: var(--white);
 	border-color: var(--dark);
@@ -245,7 +248,7 @@ input[type="color"] {
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
-	transform: translateY(4px);
+	transform: translateX(-5px) translateY(5px);
 }
 
 input[type="color"]::-webkit-color-swatch {
