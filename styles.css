@@ -164,7 +164,7 @@ select {
 	max-height: 25px;
 	height: 25px;
 	font-size: 11px;
-	text-align: center;
+	/* text-align: center; */
 }
 
 p {
@@ -177,7 +177,9 @@ select {
 }
 
 input[type="number"] {
-	width: 18px;
+	width: 93px;
+	max-height: 18px;
+	height: 18px;
 }
 
 input[type="text"] {
