@@ -9,6 +9,10 @@
 
 }
 
+* {
+	font-family: "Gill Sans", sans-serif;
+}
+
 /* Global Styles */
 body {
 	display: flex;
@@ -27,7 +31,7 @@ body {
 }
 
 .image-container {
-	border: 5px solid;
+	/* border: 5px solid; */
 	margin: auto;
 	background-color: var(--grey);
 	position: relative;
@@ -52,6 +56,7 @@ body {
 	padding: 0;
 	mix-blend-mode: multiply;
 	filter: contrast(1);
+	border: 0;
 }
 
 @keyframes rotate {
@@ -89,8 +94,9 @@ body {
 /* Grid */
 .grid-container {
 	display: grid;
-	/* grid-template-columns: 1fr 1fr 5fr; */
+	grid-template-columns: 5fr 5fr;
 	grid-auto-flow: column;
+
 	border-radius: 10px;
 	justify-content: center;
 	margin-top: 5px;
@@ -100,9 +106,10 @@ body {
 .grid-item {
 	background-color: var(--grey);
 	padding: 10px;
-	border: 6px solid;
+	/* border: 6px solid; */
 	border-color: var(--dark);
 	border-radius: 16px;
+	max-width: 725px;
 }
 
 .grid-item:first-child {
@@ -125,11 +132,10 @@ body {
 .header,
 .footer {
 	vertical-align: top;
-	font-family: Monaco, monospace;
 	font-weight: bold;
 	text-align: center;
 	width: 100%;
-	margin-bottom: 2%;
+	margin-bottom: 1.5%;
 	color: var(--white);
 	background-color: var(--dark);
 }
@@ -141,27 +147,45 @@ body {
 }
 
 /* Typography */
-div {
-	font-family: "ida Console", monospace;
-}
-
 img {
 	text-indent: -10000px;
 }
 
 /* Buttons and Inputs */
 button,
+input[type="text"],
 input[type="number"],
 select {
 	background-color: var(--neutral);
 	color: var(--white);
 	border-color: var(--dark);
 	border-radius: 5px;
-	padding: 5px 3.5px 5px 3.5px;
+	/* padding: 1px 5px 1px 5px; */
+	max-height: 25px;
+	height: 25px;
+	font-size: 11px;
+	text-align: center;
+}
+
+p {
+	margin: 0;
+}
+
+button,
+select {
+	width: 106px;
 }
 
 input[type="number"] {
-	transform: translateX(-10px);
+	width: 18px;
+}
+
+input[type="text"] {
+	font-size: 10px;
+	padding: 0;
+	margin: 0;
+	max-height: 23px;
+	height: 23px;
 }
 
 /* Lists */
@@ -172,6 +196,11 @@ li {
 
 .instructions {
 	font-size: 15px;
+}
+
+.controls {
+	font-weight: bold;
+	/* text-align: center; */
 }
 
 /* Form Controls */
@@ -203,7 +232,7 @@ input[type="checkbox"] {
 	color: currentColor;
 	width: 18px;
 	height: 18px;
-	border: 1.5px solid currentColor;
+	border: 1px solid currentColor;
 	border-radius: 4px;
 	transform: translateX(2px) translateY(2px);
 	display: inline-grid;
@@ -247,16 +276,18 @@ input[type="color"] {
 	height: 28px;
 	background-color: transparent;
 	border: none;
+	border-color: var(--dark);
 	cursor: pointer;
 	transform: translateX(-5px) translateY(5px);
+	/* transform: translateY(5px); */
 }
 
 input[type="color"]::-webkit-color-swatch {
 	border-radius: 4px;
-	border: 1.5px solid #000;
+	border: 1px solid var(--dark);
 }
 
 input[type="color"]::-moz-color-swatch {
 	border-radius: 4px;
-	border: 1.5px solid #000;
+	border: 1px solid var(--dark);
 }

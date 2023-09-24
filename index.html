@@ -17,30 +17,24 @@
 			<img id="image2" class="image" src="">
 			<!--alt="Image 2"-->
 		</div>
-		<div class="controls" id="controlsTwo" style="display: none;">
+		<div class="controls">
 			<button class="pause-button" id="pauseRotation">Start</button>
 			<button class="reset-button" id="resetRotation">Reset Rotation</button>
 		</div>
 		<div class="controls">
-			<div id="controlsOne" style="display: inline-block;">
-				<button class="pause-button" id="pauseRotation">Start</button>
-				<button class="reset-button" id="resetRotation">Reset Rotation</button>
-			</div>
 			<select name="color" id="color">
 				<option value="bgColor">BG Color</option>
 				<option value="animColor">Animated BG Color</option>
 			</select>:
-
 			<input type="color" id="bgColor" value="#D2D0D6" style="display: inline-grid;">
 			<input type="text" id="animColor" value="#33CCCC, #33CC36, #B8CC33, #FCCA00, #33CC36" style="display: none;">
-			<button class="bg-button" id="animColorButton" style="display: none;">Start BG Animation</button>
-
-			<label class="form-control" id="sameDesignText" for="sameDesign" style="display: inline-block;">Same Design:<input
-					type="checkbox" id="sameDesign" style="display: inline-grid;"></label>
-
-			<label class="form-control" id="flippedText" for="flipped" style="display: none; margin: 0px;">Flip Design:<input
-					type="checkbox" id="flipped" style="display: none;"></label></input>
+			<button class="bg-button" id="animColorButton" style="display: none;">Start BG Anim</button>
+			<label class="form-control" id="sameDesignText" for="sameDesign" style="display: inline-block;">Same
+				Design:<input type="checkbox" id="sameDesign" style="display: inline-grid;"></label>
+			<label class="form-control" id="flippedText" for="flipped" style="display: none; margin: 0px;">Flip
+				Design:<input type="checkbox" id="flipped" style="display: none;"></label></input>
 		</div>
+
 		<div class="grid-container">
 			<div class="grid-item">
 				<h4 class="grid-title">Image #1</h4>
@@ -56,7 +50,9 @@
 			<div class="grid-item">
 				<h4 class="grid-title">Image #2</h4>
 				<ul>
-					<li><input type="file" id="inputImage2" accept="image/*"></li>
+					<li><input type="file" id="inputImage2" accept="image/*">
+						<p id="inputImage2Text" style="display: none;">Same Design Checked!</p>
+					</li>
 					<li><label for="speed2">Rotation Speed (seconds):</label>
 						<input type="number" id="speed2" min="1" max="10" value="5">
 					</li>
@@ -66,7 +62,7 @@
 			</div>
 		</div>
 		<div class="grid-container">
-			<div class="grid-item">
+			<div class="grid-item" style="grid-column: 1 / 3;">
 				<h4 class="grid-title">Instructions</h4>
 				<ul class="instructions">
 					<li>Import a image of the moire disk design into Image #1 by selecting the desired file section.
@@ -74,7 +70,8 @@
 					<li>If Disk 2 shares the same design as Disk 1, check the "Same Design" checkbox. If Disk 2's design is
 						flipped, check the "Flipped" checkbox.</li>
 					<li>Adjust the background color by clicking on the gray box near the text "BG Color."</li>
-					<li>You can also animate the background color by clicking on blue button, "BG Color" and selecting to "Animated BG Color".</li>
+					<li>You can also animate the background color by clicking on blue button, "BG Color" and selecting to
+						"Animated BG Color".</li>
 					<li>For the Animated BG Color, just hex codes for colors and seperate them with commas.</li>
 					<li>Initiate or pause the rotation by clicking the "Start" button.</li>
 					<li>If any issues occur with the rotation, such as being out of sync, press the "Reset Rotation" button to fix
